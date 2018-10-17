@@ -1,5 +1,5 @@
 {
-    "name": "brandcreative/composer-installer-wordpress",
+    "name": "brandcreative/composer-installer-wordpress-skeleton",
     "description": "WordPress is web software you can use to create a beautiful website or blog.",
     "type": "wordpress-core",
     "authors": [
@@ -9,6 +9,7 @@
       }
     ],
     "require": {
+      "composer/installers": "~1.0",
       "slowprog/composer-copy-file": "*",
       "brandcreative/composer-files-wordpress":"dev-master",
       "kimlonglecis/wordpress-core": "dev-master",
@@ -18,7 +19,9 @@
       "php": ">=5.3.2",
       "johnpbloch/wordpress": "*",
       "wp-cli/wp-cli" : "~0.22",
-      "psy/psysh" : "~0.6"
+      "psy/psysh" : "~0.6",
+      "brandcreative/composer-files-wordpress":"dev-master",
+
     },
     "repositories": [
       {
@@ -35,14 +38,11 @@
       }
     ],
     "extra": {
+      "installer-paths": {
+        "./content": ["wordpress-theme", "wordpress-plugin", "wordpress-muplugin"]
+    },
       "copy-file": {
-        "vendor/kimlonglecis/wordpress-core": "wp",
-        "vendor/brandcreative/composer-files-wordpress/config/.gitignore": "./",
-        "vendor/brandcreative/composer-files-wordpress/config/.htaccess": "./",
-        "vendor/brandcreative/composer-files-wordpress/config/index.php": "./",
-        "vendor/brandcreative/composer-files-wordpress/config/local-config-sample.php": "./",
-        "vendor/brandcreative/composer-files-wordpress/config/wp-config.php": "./",
-        "vendor/brandcreative/composer-files-wordpress/config/wp-content": "./"
+        "vendor/kimlonglecis/wordpress-core": "wp"
       }
     },
     "scripts": {

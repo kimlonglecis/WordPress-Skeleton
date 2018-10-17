@@ -1,4 +1,19 @@
 <?php
+$MYSQL_DATABASE = getenv('MYSQL_DATABASE');
+$MYSQL_USER = getenv('MYSQL_USER');
+$MYSQL_PASSWORD = getenv('MYSQL_PASSWORD');
+$MYSQL_HOST = getenv('MYSQL_HOST');
+
+$AUTH_KEY = getenv('AUTH_KEY');
+$SECURE_AUTH_KEY = getenv('SECURE_AUTH_KEY');
+$LOGGED_IN_KEY = getenv('LOGGED_IN_KEY');
+$NONCE_KEY = getenv('NONCE_KEY');
+$AUTH_SALT = getenv('AUTH_SALT');
+$SECURE_AUTH_SALT = getenv('SECURE_AUTH_SALT');
+$LOGGED_IN_SALT = getenv('LOGGED_IN_SALT');
+$NONCE_SALT = getenv('NONCE_SALT');
+ 
+
 // ===================================================
 // Load database info and local development parameters
 // ===================================================
@@ -7,10 +22,10 @@ if ( file_exists( dirname( __FILE__ ) . '/local-config.php' ) ) {
 	include( dirname( __FILE__ ) . '/local-config.php' );
 } else {
 	define( 'WP_LOCAL_DEV', false );
-	define( 'DB_NAME', '%%DB_NAME%%' );
-	define( 'DB_USER', '%%DB_USER%%' );
-	define( 'DB_PASSWORD', '%%DB_PASSWORD%%' );
-	define( 'DB_HOST', '%%DB_HOST%%' ); // Probably 'localhost'
+	define('DB_NAME', $MYSQL_DATABASE);
+    define('DB_USER', $MYSQL_USER);
+    define('DB_PASSWORD', $MYSQL_PASSWORD);
+    define('DB_HOST', $MYSQL_HOST);
 }
 
 // ========================
@@ -29,14 +44,14 @@ define( 'DB_COLLATE', '' );
 // Salts, for security
 // Grab these from: https://api.wordpress.org/secret-key/1.1/salt
 // ==============================================================
-define( 'AUTH_KEY',         'put your unique phrase here' );
-define( 'SECURE_AUTH_KEY',  'put your unique phrase here' );
-define( 'LOGGED_IN_KEY',    'put your unique phrase here' );
-define( 'NONCE_KEY',        'put your unique phrase here' );
-define( 'AUTH_SALT',        'put your unique phrase here' );
-define( 'SECURE_AUTH_SALT', 'put your unique phrase here' );
-define( 'LOGGED_IN_SALT',   'put your unique phrase here' );
-define( 'NONCE_SALT',       'put your unique phrase here' );
+define('AUTH_KEY',         $AUTH_KEY);
+define('SECURE_AUTH_KEY',  $SECURE_AUTH_KEY);
+define('LOGGED_IN_KEY',    $LOGGED_IN_KEY);
+define('NONCE_KEY',        $NONCE_KEY);
+define('AUTH_SALT',        $AUTH_SALT);
+define('SECURE_AUTH_SALT', $SECURE_AUTH_SALT);
+define('LOGGED_IN_SALT',   $LOGGED_IN_SALT);
+define('NONCE_SALT',       $NONCE_SALT);
 
 // ==============================================================
 // Table prefix
