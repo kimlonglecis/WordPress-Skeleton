@@ -1,0 +1,58 @@
+{
+    "name": "brandcreative/composer-installer-wordpress",
+    "description": "WordPress is web software you can use to create a beautiful website or blog.",
+    "type": "wordpress-core",
+    "authors": [
+      {
+        "name": "WordPress Community",
+        "homepage": "http://wordpress.org/about/"
+      }
+    ],
+    "require": {
+      "slowprog/composer-copy-file": "*",
+      "brandcreative/composer-files-wordpress":"dev-master",
+      "kimlonglecis/wordpress-core": "dev-master",
+      "wpackagist-plugin/wordpress-seo":">=7.0.2"
+    },
+    "require-dev": {
+      "php": ">=5.3.2",
+      "johnpbloch/wordpress": "*",
+      "wp-cli/wp-cli" : "~0.22",
+      "psy/psysh" : "~0.6"
+    },
+    "repositories": [
+      {
+        "type":"composer",
+        "url":"https://wpackagist.org"
+      },
+      {
+        "type": "vcs",
+        "url": "git@bitbucket.org:brandcreative/composer-files-wordpress.git"
+      },
+      {
+        "type": "vcs",
+        "url": "git@github.com:kimlonglecis/WordPress.git"
+      }
+    ],
+    "extra": {
+      "copy-file": {
+        "vendor/kimlonglecis/wordpress-core": "wp",
+        "vendor/brandcreative/composer-files-wordpress/config/.gitignore": "./",
+        "vendor/brandcreative/composer-files-wordpress/config/.htaccess": "./",
+        "vendor/brandcreative/composer-files-wordpress/config/index.php": "./",
+        "vendor/brandcreative/composer-files-wordpress/config/local-config-sample.php": "./",
+        "vendor/brandcreative/composer-files-wordpress/config/wp-config.php": "./",
+        "vendor/brandcreative/composer-files-wordpress/config/wp-content": "./"
+      }
+    },
+    "scripts": {
+      "post-install-cmd": [
+          "SlowProg\\CopyFile\\ScriptHandler::copy"
+      ],
+      "post-update-cmd": [
+          "SlowProg\\CopyFile\\ScriptHandler::copy"
+      ]
+  }
+    
+  }
+  
